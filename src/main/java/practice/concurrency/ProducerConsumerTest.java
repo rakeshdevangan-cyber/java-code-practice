@@ -1,11 +1,14 @@
 package practice.concurrency;
 
-import java.util.Queue;
 import java.util.concurrent.*;
 
 public class ProducerConsumerTest {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
+        prodConsumerUsingBlockingQueue();
+    }
+
+    private static void prodConsumerUsingBlockingQueue() throws InterruptedException, ExecutionException {
         final BlockingQueue queue  = new ArrayBlockingQueue(20);
 
         ExecutorService ex = Executors.newFixedThreadPool(2);
@@ -27,13 +30,7 @@ public class ProducerConsumerTest {
         future2.get();
 
         ex.shutdown();
-
-
-
     }
-
-
-
 }
 
 
